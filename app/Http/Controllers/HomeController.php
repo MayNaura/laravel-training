@@ -16,9 +16,15 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except'=> 'welcome']);
     }
 
+    public function welcome()
+    {
+        return view('welcome');
+    }
+
+    // Authenticate user and show their posts on the home page
     /**
      * Show the application dashboard.
      *
