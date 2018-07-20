@@ -8,6 +8,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    {{-- Google Auth --}}
+    <meta name="google-signin-client_id" content="443858812433-uepc3956up6rce03roiooiv9d9etn5os.apps.googleusercontent.com">
+
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
@@ -111,6 +114,8 @@
     <script>
         CKEDITOR.replace( 'article-ckeditor' );
     </script>
+
+   
 </body>
             @yield('scripts')
 </html>

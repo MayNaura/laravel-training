@@ -32,8 +32,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user_id = auth()->user()->id;
-        $user = User::find($user_id);
-        return view('home')->with('posted', $user->post);
+        $userId = auth()->user()->id;
+        $user = User::find($userId);
+
+        return view('home')->with('posted', $user->post()->orderBy('created_at', 'desc')->paginate(3));
     }
 }

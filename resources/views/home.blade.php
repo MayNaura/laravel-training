@@ -30,6 +30,9 @@
                             <p>No posts created</p> 
                     @endif
                 </div>
+                <div class="text-center">
+                    {!! $posted->links() !!}
+                </div>
             </div>
         </div>
     </div>

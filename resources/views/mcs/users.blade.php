@@ -10,9 +10,9 @@
                             <th style="width: 0.5%;">ID</th>
                             <th style="width: 8%;">NAME</th>
                             <th style="width: 10%;">EMAIL</th>
-                          @if(!Auth::guest())  {{-- prevent guest from seeing these buttons  --}}
+                          @auth  {{-- prevent guest from seeing these buttons  --}}
                             <th style="width: 3.4%;">BUTTON</th>
-                          @endif
+                          @endauth
                         </tr>
                     </thead>
                     <tbody>
@@ -23,18 +23,18 @@
                                     <td>{{$peeps->name}}</td>
                                     <td>{{$peeps->email}}</td>
 
-                                    @if(!Auth::guest())  {{-- prevent guest from seeing these buttons  --}}
-                                    <td><a href='/mcs/view/{{$peeps->id}}' class="btn btn-default">view</a>
-                                        <a href='modify/{{$peeps->id}}' class="btn btn-primary">Edit</a>
-                                        <form method="POST" action="/remove/{{$peeps->id}}" style="float:right">
+                                    @auth  {{-- prevent guest from seeing these buttons  --}}
+                                        <td><a href='/mcs/view/{{$peeps->id}}' class="btn btn-default">view</a>
+                                            <a href='modify/{{$peeps->id}}' class="btn btn-primary">Edit</a>
+                                            <form method="POST" action="/remove/{{$peeps->id}}" style="float:right">
 
-                                            {{method_field('DELETE')}}
-                                            {{csrf_field()}}
+                                                {{method_field('DELETE')}}
+                                                {{csrf_field()}}
 
-                                                <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </td>
-                                    @endif
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </td>
+                                    @endauth
 
                                 </tr>
                                 @endforeach
@@ -53,7 +53,9 @@
         <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
         <script>
                 $(document).ready(function() {
-                    $('#example').DataTable();
+                    $('#example').DataTable({
+                        "stateSave": true
+                    });
                 } );
         </script>
     
