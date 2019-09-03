@@ -17,8 +17,6 @@ Basic CRUD app:
 - **Delete**
 - Authenticated users can create posts
 
-`This work is in progress`
-
 
 
 
